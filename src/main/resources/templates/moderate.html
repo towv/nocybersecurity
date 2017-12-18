@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Moderator</title>
+    </head>
+    <body>
+
+        <h1>Moderator window</h1>
+
+        <ul>
+            <li th:each="user:${users}">
+                <label>Username</label><br/>
+                <span th:text="${user.username}"/>
+                <label>Password</label><br/>
+                <span th:text="${user.password}"/>
+                <label>Tasks:</label><br/>
+                <span th:text="${#lists.size(user.tasks)}"/>
+                <form th:action="@{/moderator/{id}/delete (id=${user.id})}" th:method="DELETE">
+                    <button type="submit" style="background-color: red">Delete</button>
+                </form>
+            </li>
+        </ul>
+
+        <p></p>
+    </body>
+</html>

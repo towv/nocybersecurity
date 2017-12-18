@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Tasks</title>
+    </head>
+    <body>
+
+        <div th:if="${session.user.moderator}">
+            <h1>Moderate</h1>
+            <form action="/moderator" method="GET">
+                <button type="submit">Moderate users!</button>
+            </form>
+        </div>
+
+        <div th:if="${session.user}">
+            <h1>Your tasks</h1>
+
+            <form th:action="@{/tasks/{id}/addTask (id=${session.user.id})}" method="GET">
+                <button type="submit">Add a task!</button>
+            </form>
+            <form action="/logout" method="GET">
+                <button type="submit">Logout</button>
+            </form>
+            <ul>
+                <li th:each="task:${tasks}">
+                    <label>Task:</label>
+                    <span th:text="${task.text}"/><br/>
+                    <label>Created:</label>
+                    <span th:text="${task.date}"/><br/><br/>
+                </li>
+            </ul>
+
+        </div>
+        <div th:unless="${session.user}">
+            <h1>Log in to view your tasks!</h1>
+        </div>
+    </body>
+</html>

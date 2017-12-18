@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Create a task</title>
+    </head>
+    <body>
+
+        <h1>Create a new task</h1>
+
+        <form th:action="@{/tasks/{id}/addTask (id=${session.user.id})}" method="POST">
+            <input type="text" name="text"/>
+            <button type="input">Add</button>
+        </form>
+
+        <p></p>
+    </body>
+</html>

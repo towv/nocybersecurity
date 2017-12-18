@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Login form</title>
+    </head>
+    <body>
+
+        <h1>Login or register to view your tasks</h1>
+
+        <form action="#" th:action="@{/login}" method="POST">
+            <input type="text" name="username"/>
+            <input type="password" name="password"/>
+            <input type="submit" value="Login"/>
+        </form>
+        <form action="/register" method="GET">
+            <button type="input">Register</button>
+        </form>
+
+        <p></p>
+    </body>
+</html>
