@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Modify account</title>
+    </head>
+    <body>
+
+        <h1>Modify account</h1>
+
+        <form method="POST" th:action="@{/{id}/modifyAccount (id=${user.id})}">
+            <input type="text" name="username" placeholder="username"/>
+            <input type="text" name="password" placeholder="password"/>
+            <button type="submit">Edit account!</button>
+        </form>
+
+    </body>
+</html>

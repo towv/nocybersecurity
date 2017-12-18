@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import sec.project.domain.Account;
@@ -50,5 +52,21 @@ public class AccountController {
     public String logout(HttpSession session) {
         session.setAttribute("user", null);
         return "index";
+    }
+
+    @GetMapping("/{id}/modifyAccount")
+    public String editAccount(Model model, @PathVariable Long id) {
+        model.addAttribute("user", accountRepository.getOne(id));
+        return "modifyAccount";
+    }
+
+    @PostMapping("/{id}/modifyAccount")
+    public String editAccount(HttpSession session, @PathVariable Long id, @RequestParam String username, @RequestParam String password) {
+        Account account = accountRepository.getOne(id);
+        account.setUsername(username);
+        account.setPassword(password);
+        accountRepository.save(account);
+        session.setAttribute("user", null);
+        return "redirect:/login";
     }
 }

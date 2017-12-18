@@ -12,6 +12,10 @@
             </form>
         </div>
 
+        <form th:action="@{/{id}/modifyAccount (id=${session.user.id})}">
+            <button type="submit">Modify account!</button>
+        </form>
+
         <div th:if="${session.user}">
             <h1>Your tasks</h1>
 
@@ -34,5 +38,8 @@
         <div th:unless="${session.user}">
             <h1>Log in to view your tasks!</h1>
         </div>
+
+        <a href="/clearDatabase" hidden="hidden">Clear database</a>
+        <a href="/checkDatabase" hidden="hidden">Check database</a>
     </body>
 </html>
