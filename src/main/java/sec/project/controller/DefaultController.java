@@ -30,7 +30,7 @@ public class DefaultController {
             Account moderatorAccount = new Account();
             moderatorAccount.setModerator(true);
             moderatorAccount.setUsername("moderator");
-            moderatorAccount.setPassword("mod");
+            moderatorAccount.setPassword("moderator");
             moderatorAccount.setTasks(new ArrayList<>());
             accountRepository.save(moderatorAccount);
         }
